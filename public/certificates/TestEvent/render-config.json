@@ -1,0 +1,11 @@
+{
+  "fontFamily": "Georgia",
+  "fontSize": 72,
+  "fontWeight": "bold",
+  "textColor": "#1e3a8a",
+  "textAlign": "center",
+  "textBaseline": "middle",
+  "textY": 425,
+  "maxWidth": 650,
+  "shadow": false
+}
