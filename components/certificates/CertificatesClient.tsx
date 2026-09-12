@@ -172,28 +172,35 @@ export default function CertificatesClient({ initialEvents }: { initialEvents: E
   };
 
   return (
-    <Card className="w-full relative z-10" withGlow={true}>
-      <form onSubmit={handleGenerate} className="flex flex-col gap-6">
-        <div>
-          <label className="block text-steel font-ui uppercase tracking-wider mb-2">
+    <Card className="w-full relative z-10" padding="lg" withGlow={true}>
+      <form onSubmit={handleGenerate} className="flex flex-col gap-8">
+        <div className="relative group/select">
+          <label className="block text-steel font-ui uppercase tracking-wider mb-2 text-sm group-focus-within/select:text-crimson transition-colors">
             Select Event
           </label>
-          <select
-            value={selectedEvent}
-            onChange={(e) => setSelectedEvent(e.target.value)}
-            className="w-full bg-obsidian border border-chrome-dark/30 rounded-none p-3 text-ink focus:border-crimson focus:outline-none transition-colors appearance-none font-ui"
-          >
-            <option value="" disabled>-- Select an Event --</option>
-            {initialEvents.map((evt) => (
-              <option key={evt.id} value={evt.id}>
-                {evt.name}
-              </option>
-            ))}
-          </select>
+          <div className="relative">
+            <select
+              value={selectedEvent}
+              onChange={(e) => setSelectedEvent(e.target.value)}
+              className="w-full bg-void/50 border border-chrome-dark/30 p-4 pr-12 text-ink focus:border-crimson focus:shadow-[0_0_15px_rgba(255,16,83,0.2)] focus:outline-none transition-all appearance-none font-ui cursor-pointer"
+            >
+              <option value="" disabled className="bg-obsidian text-steel">-- Select an Event --</option>
+              {initialEvents.map((evt) => (
+                <option key={evt.id} value={evt.id} className="bg-obsidian text-ink">
+                  {evt.name}
+                </option>
+              ))}
+            </select>
+            <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-steel group-focus-within/select:text-crimson transition-colors">
+              <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1L7 7L13 1" stroke="currentColor" strokeWidth="2" strokeLinecap="square"/>
+              </svg>
+            </div>
+          </div>
         </div>
 
-        <div>
-          <label className="block text-steel font-ui uppercase tracking-wider mb-2">
+        <div className="relative group/input">
+          <label className="block text-steel font-ui uppercase tracking-wider mb-2 text-sm group-focus-within/input:text-crimson transition-colors">
             Enter USN / ID
           </label>
           <input
@@ -201,12 +208,32 @@ export default function CertificatesClient({ initialEvents }: { initialEvents: E
             value={usn}
             onChange={(e) => setUsn(e.target.value)}
             placeholder="e.g. CM24001"
-            className="w-full bg-obsidian border border-chrome-dark/30 rounded-none p-3 text-ink focus:border-crimson focus:outline-none transition-colors font-ui uppercase placeholder:normal-case placeholder:text-steel/50"
+            className="w-full bg-void/50 border border-chrome-dark/30 p-4 text-ink focus:border-crimson focus:shadow-[0_0_15px_rgba(255,16,83,0.2)] focus:outline-none transition-all font-ui uppercase placeholder:normal-case placeholder:text-steel/30 tracking-widest"
           />
         </div>
 
-        <Button type="submit" disabled={loading} className="w-full">
-          {loading ? "Decrypting Records..." : "Generate Certificate"}
+        <Button type="submit" disabled={loading} className="w-full py-4 text-lg tracking-widest group/btn relative overflow-hidden">
+          <span className="relative z-10 flex items-center justify-center gap-3">
+            {loading ? (
+              <>
+                <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"/>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/>
+                </svg>
+                Decrypting Records...
+              </>
+            ) : (
+              <>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="square" strokeLinejoin="miter">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+                Generate Certificate
+              </>
+            )}
+          </span>
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-[150%] group-hover/btn:translate-x-[150%] transition-transform duration-700 ease-in-out" />
         </Button>
 
         {error && (
@@ -217,9 +244,20 @@ export default function CertificatesClient({ initialEvents }: { initialEvents: E
       </form>
 
       {successDataUrl && (
-        <div className="mt-12 flex flex-col items-center animate-in fade-in slide-in-from-bottom-4 duration-500">
-          <div className="w-full border-2 border-chrome-dark/30 p-2 bg-void shadow-2xl relative">
-            <img src={successDataUrl} alt="Certificate Preview" className="w-full h-auto shadow-inner" />
+        <div className="mt-16 flex flex-col items-center animate-in fade-in slide-in-from-bottom-8 duration-700 relative">
+          
+          {/* Certificate Display Frame */}
+          <div 
+            className="w-full relative p-[2px] bg-gradient-to-br from-chrome-light/40 to-chrome-dark/40 shadow-[0_0_30px_rgba(255,16,83,0.15)] transition-all"
+            style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 20px 100%, 0 calc(100% - 20px))" }}
+          >
+            <div 
+              className="bg-void w-full h-full relative p-2"
+              style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 19px 100%, 0 calc(100% - 19px))" }}
+            >
+              <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(transparent_50%,rgba(0,0,0,0.2)_50%)] bg-[length:100%_4px] z-10 opacity-50 mix-blend-overlay" />
+              <img src={successDataUrl} alt="Certificate Preview" className="w-full h-auto relative z-0" />
+            </div>
           </div>
           <div className="flex gap-4 mt-6 w-full">
             <Button onClick={handleDownloadPNG} className="flex-1" variant="secondary">
