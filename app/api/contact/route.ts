@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import { logger } from "../../../utils/logger";
 import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
 
@@ -26,6 +27,7 @@ export async function POST(req: Request) {
     if (ratelimit) {
       const { success, limit, reset, remaining } = await ratelimit.limit(ip);
       if (!success) {
+        logger.warn("Rate limit exceeded on contact form", { ip, remaining, reset });
         return NextResponse.json(
           { error: "Too many requests. Please try again later." },
           { 
@@ -43,10 +45,12 @@ export async function POST(req: Request) {
     const { email, message } = await req.json();
 
     if (!email || !message) {
+      logger.warn("Contact form missing required fields", { ip, emailProvided: !!email, messageProvided: !!message });
       return NextResponse.json({ error: "Email and message are required." }, { status: 400 });
     }
 
     if (!process.env.RESEND_API_KEY) {
+      logger.error("Resend API key is not configured on the server", { ip });
       return NextResponse.json({ error: "Resend API key is not configured on the server." }, { status: 500 });
     }
 
@@ -66,13 +70,14 @@ export async function POST(req: Request) {
     });
 
     if (error) {
-      console.error("Resend Error:", error);
+      logger.error("Failed to send email via Resend", { ip, email, error });
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
 
+    logger.info("Email sent successfully via Resend", { ip, email });
     return NextResponse.json({ success: true, data });
   } catch (error: any) {
-    console.error("Contact API Error:", error);
+    logger.error("Unhandled error in contact API route", { error: error.message });
     return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
   }
 }
