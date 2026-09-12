@@ -24,6 +24,15 @@ const config: Config = {
       borderRadius: {
         sm: "4px",
         lg: "12px",
+      },
+      keyframes: {
+        scan: {
+          '0%': { transform: 'translateY(-100%)' },
+          '100%': { transform: 'translateY(100%)' },
+        }
+      },
+      animation: {
+        scan: 'scan 4s linear infinite',
       }
     },
   },
