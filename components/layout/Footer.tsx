@@ -41,8 +41,12 @@ export function Footer() {
             </div>
           </div>
         </div>
-        <div className="mt-12 pt-8 border-t border-line text-xs text-ink-dim text-center">
-          &copy; {new Date().getFullYear()} HWI JDCOEM. All rights reserved.
+        <div className="mt-12 pt-8 border-t border-line flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-ink-dim">
+          <div>&copy; {new Date().getFullYear()} HWI JDCOEM. All rights reserved.</div>
+          <div className="flex space-x-6">
+            <Link href="/privacy" className="hover:text-ink transition-colors">Privacy Policy</Link>
+            <Link href="/terms" className="hover:text-ink transition-colors">Terms and Conditions</Link>
+          </div>
         </div>
       </div>
     </footer>
