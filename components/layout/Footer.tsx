@@ -11,10 +11,8 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
           <div className="col-span-1 md:col-span-2">
             <Link href="/" className="font-display font-bold text-3xl tracking-wider text-ink flex items-center gap-3 group w-fit">
-              <div className="w-8 h-8 rounded-full border border-signal bg-signal/10 flex items-center justify-center group-hover:bg-signal/30 transition-colors shadow-[0_0_15px_rgba(0,255,128,0.2)]">
-                <div className="w-2 h-2 rounded-full bg-signal shadow-[0_0_10px_#00FF80] animate-pulse" />
-              </div>
-              HWI<span className="text-signal">.</span>
+              <img src="/logo.jpg" alt="HWI Logo" className="w-10 h-10 object-contain rounded-full transition-transform duration-700 group-hover:rotate-[360deg] shadow-[0_0_15px_rgba(0,255,128,0.2)]" />
+              HWI JDCOEM<span className="text-signal">.</span>
             </Link>
             <p className="mt-6 text-steel text-sm max-w-sm font-ui leading-relaxed">
               Hackers &amp; Founders Workspace. Building, connecting, and creating together under a unified command structure.
