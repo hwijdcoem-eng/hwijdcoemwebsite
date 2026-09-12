@@ -16,7 +16,7 @@ export default function Home() {
       <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
         {/* Abstract Background Elements */}
         <div className="absolute inset-0 z-0 opacity-20 pointer-events-none flex items-center justify-center">
-          <img src="/logo.png" alt="" className="absolute w-[500px] h-[500px] object-contain opacity-20" />
+          <img src="/logo.jpg" alt="" className="absolute w-[500px] h-[500px] object-contain opacity-20 mix-blend-screen" />
           <div className="absolute w-[800px] h-[800px] rounded-full border border-line animate-[pulse_4s_cubic-bezier(0.4,0,0.6,1)_infinite]" />
           <div className="absolute w-[600px] h-[600px] rounded-full border border-signal/20" />
         </div>
