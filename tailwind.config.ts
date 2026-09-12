@@ -29,10 +29,18 @@ const config: Config = {
         scan: {
           '0%': { transform: 'translateY(-100%)' },
           '100%': { transform: 'translateY(100%)' },
+        },
+        scanIdle: {
+          '0%': { transform: 'translateY(-100%)', opacity: '0' },
+          '2%': { opacity: '0.4' },
+          '18%': { opacity: '0.4' },
+          '20%': { transform: 'translateY(300%)', opacity: '0' },
+          '100%': { transform: 'translateY(300%)', opacity: '0' },
         }
       },
       animation: {
         scan: 'scan 4s linear infinite',
+        scanIdle: 'scanIdle 7s linear infinite',
       }
     },
   },

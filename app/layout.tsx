@@ -22,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${orbitron.variable} ${rajdhani.variable} ${pressStart.variable}`}>
-      <body className="bg-void text-ink font-ui antialiased selection:bg-crimson selection:text-ink flex flex-col min-h-screen">
+      <body className="text-ink font-ui antialiased selection:bg-crimson selection:text-ink flex flex-col min-h-screen">
         <SplashScreen />
         <DataStreamBackground />
         <Navbar />

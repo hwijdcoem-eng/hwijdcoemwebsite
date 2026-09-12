@@ -39,7 +39,10 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
           }}
         >
           {withGlow && (
-            <div className="absolute bottom-0 left-0 w-8 h-8 bg-crimson opacity-0 group-hover:opacity-40 blur-xl transition-opacity duration-300 pointer-events-none" />
+            <div 
+              className="absolute bottom-0 left-0 w-[15px] h-[15px] bg-crimson/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" 
+              style={{ clipPath: "polygon(100% 100%, 0 100%, 0 0)" }}
+            />
           )}
           {children}
         </div>

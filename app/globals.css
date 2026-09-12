@@ -4,13 +4,17 @@
 
 @layer base {
   body {
-    @apply bg-void text-ink font-ui antialiased selection:bg-crimson selection:text-ink;
-    background-color: #0A0A0B;
+    @apply text-ink font-ui antialiased selection:bg-crimson selection:text-ink;
+    background-color: transparent;
     background-image: 
       radial-gradient(#141417 1px, transparent 1px),
       radial-gradient(#141417 1px, transparent 1px);
     background-size: 24px 24px;
     background-position: 0 0, 12px 12px;
+  }
+
+  html {
+    background-color: #0A0A0B;
   }
 }
 

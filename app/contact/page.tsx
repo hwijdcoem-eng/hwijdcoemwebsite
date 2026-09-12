@@ -43,7 +43,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-void pt-20 pb-16 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen pt-20 pb-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-12">
           <SectionHeading as="h1" className="mb-4">
