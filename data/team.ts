@@ -16,6 +16,7 @@ export type TeamMember = {
   category: TeamCategory;
   departmentYear: string;
   imageUrl?: string;
+  imagePosition?: "top" | "center" | "bottom";
   email?: string;
   linkedinUrl?: string;
   bio?: string;
@@ -24,7 +25,7 @@ export type TeamMember = {
 export const teamData: TeamMember[] = [
   // Admin Body
   { id: "1", name: "Piyush Sarve", role: "President", category: "Admin Body", departmentYear: "DS/4th" },
-  { id: "2", name: "Sagar Kharbikar", role: "Vice-President", category: "Admin Body", departmentYear: "CSE/3rd", imageUrl: "/team/2.jpg" },
+  { id: "2", name: "Sagar Kharbikar", role: "Vice-President", category: "Admin Body", departmentYear: "CSE/3rd", imageUrl: "/team/2.jpg", imagePosition: "top" },
   { id: "3", name: "Anushka Moon", role: "Secretary", category: "Admin Body", departmentYear: "CSE/3rd", imageUrl: "/team/3.png" },
   { id: "4", name: "Kapil Pawar", role: "Treasurer", category: "Admin Body", departmentYear: "ME/3rd", imageUrl: "/team/4.png" },
   { id: "5", name: "Parmanand Bidwaik", role: "Joint Treasurer", category: "Admin Body", departmentYear: "CSE/2nd", imageUrl: "/team/5.jpg" },
@@ -37,7 +38,7 @@ export const teamData: TeamMember[] = [
   // Web Development Team
   { id: "9", name: "Ojaswa Wadichar", role: "Web Development Head", category: "Web Development Team", departmentYear: "CSE/3rd", imageUrl: "/team/9.jpeg" },
   { id: "10", name: "Divya Mishra", role: "Web Development Co-Head", category: "Web Development Team", departmentYear: "CSE/3rd", imageUrl: "/team/10.JPG" },
-  { id: "11", name: "Himanshu Bawane", role: "Web Development Co-Ordinator", category: "Web Development Team", departmentYear: "CY/2nd", imageUrl: "/team/11.jpg" },
+  { id: "11", name: "Himanshu Bawane", role: "Web Development Co-Ordinator", category: "Web Development Team", departmentYear: "CY/2nd", imageUrl: "/team/11.jpg", imagePosition: "top" },
   { id: "12", name: "Abhishek pahade", role: "Web Development Co-Ordinator", category: "Web Development Team", departmentYear: "DS/2nd", imageUrl: "/team/12.png" },
 
   // Technical Team
@@ -52,7 +53,7 @@ export const teamData: TeamMember[] = [
   { id: "17", name: "Ashwin Shende", role: "Operational Head", category: "Operational Team", departmentYear: "CSE/3rd" },
   { id: "18", name: "Yash Yadav", role: "Operational Co-Head", category: "Operational Team", departmentYear: "DS/2nd" },
   { id: "19", name: "Piyush Agrel", role: "Operational Co-Ordinator", category: "Operational Team", departmentYear: "CY/2nd", imageUrl: "/team/19.jpg" },
-  { id: "20", name: "Rani Hatwar", role: "Operational Co-Ordinator", category: "Operational Team", departmentYear: "CY/2nd", imageUrl: "/team/20.jpg" },
+  { id: "20", name: "Rani Hatwar", role: "Operational Co-Ordinator", category: "Operational Team", departmentYear: "CY/2nd", imageUrl: "/team/20.jpg", imagePosition: "top" },
 
   // Publicity Team
   { id: "21", name: "Samisksha Zodope", role: "Publicity Head", category: "Publicity Team", departmentYear: "ETC/3rd", imageUrl: "/team/21.jpeg" },

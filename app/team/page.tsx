@@ -89,7 +89,7 @@ export default function TeamPage() {
                                   src={member.imageUrl!}
                                   alt={member.name}
                                   fill
-                                  className="object-cover grayscale-[0.85] contrast-125 brightness-90 group-hover/card:grayscale-0 group-hover/card:contrast-100 group-hover/card:brightness-100 transition-all duration-250"
+                                  className={`object-cover ${member.imagePosition === 'top' ? 'object-top' : member.imagePosition === 'bottom' ? 'object-bottom' : 'object-center'} grayscale-[0.85] contrast-125 brightness-90 group-hover/card:grayscale-0 group-hover/card:contrast-100 group-hover/card:brightness-100 transition-all duration-250`}
                                 />
                                 {/* Crimson tint in shadows overlay */}
                                 <div className="absolute inset-0 bg-crimson/30 mix-blend-multiply group-hover/card:opacity-0 transition-opacity duration-250 pointer-events-none z-10" />
