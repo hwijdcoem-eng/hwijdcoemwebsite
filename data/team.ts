@@ -24,7 +24,7 @@ export type TeamMember = {
 export const teamData: TeamMember[] = [
   // Admin Body
   { id: "1", name: "Piyush Sarve", role: "President", category: "Admin Body", departmentYear: "DS/4th" },
-  { id: "2", name: "Sagar Kharbikar", role: "Vice-President", category: "Admin Body", departmentYear: "CSE/3rd", imageUrl: "/team/2.png" },
+  { id: "2", name: "Sagar Kharbikar", role: "Vice-President", category: "Admin Body", departmentYear: "CSE/3rd", imageUrl: "/team/2.jpg" },
   { id: "3", name: "Anushka Moon", role: "Secretary", category: "Admin Body", departmentYear: "CSE/3rd", imageUrl: "/team/3.png" },
   { id: "4", name: "Kapil Pawar", role: "Treasurer", category: "Admin Body", departmentYear: "ME/3rd", imageUrl: "/team/4.png" },
   { id: "5", name: "Parmanand Bidwaik", role: "Joint Treasurer", category: "Admin Body", departmentYear: "CSE/2nd", imageUrl: "/team/5.jpg" },
