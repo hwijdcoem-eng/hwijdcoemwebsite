@@ -66,7 +66,7 @@ export const teamData: TeamMember[] = [
   { id: "26", name: "Samyak khadse", role: "Media Head", category: "Media Team", departmentYear: "ETC/3rd", imageUrl: "/team/26.jpeg" },
   { id: "27", name: "Vedant Baraskar", role: "Media Co-Head", category: "Media Team", departmentYear: "AI/2nd" },
   { id: "28", name: "Bhavesh Thote", role: "Media Co-Ordinator", category: "Media Team", departmentYear: "AI/2nd" },
-  { id: "29", name: "Swetha Hajare", role: "Media Co-Ordinator", category: "Media Team", departmentYear: "AI/2nd", imageUrl: "/team/29.jpg" },
+  { id: "29", name: "Swetha Hajare", role: "Media Co-Ordinator", category: "Media Team", departmentYear: "AI/2nd", imageUrl: "/team/29.jpg", imagePosition: "top" },
   { id: "30", name: "Tanvi Kamde", role: "Media Co-Ordinator", category: "Media Team", departmentYear: "CY/2nd", imageUrl: "/team/30.jpg" },
 
   // Volunteer Team
