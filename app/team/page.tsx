@@ -82,7 +82,7 @@ export default function TeamPage() {
                           <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-[2px] w-2 h-[2px] bg-crimson z-20 pointer-events-none" />
 
                           {/* Inner Container */}
-                          <div className="absolute inset-[4px] rounded-full overflow-hidden bg-obsidian-raised relative">
+                          <div className="absolute inset-[4px] rounded-full overflow-hidden bg-obsidian-raised">
                             {hasPhoto ? (
                               <>
                                 <Image
@@ -92,9 +92,9 @@ export default function TeamPage() {
                                   className="object-cover grayscale-[0.85] contrast-125 brightness-90 group-hover/card:grayscale-0 group-hover/card:contrast-100 group-hover/card:brightness-100 transition-all duration-250"
                                 />
                                 {/* Crimson tint in shadows overlay */}
-                                <div className="absolute inset-0 bg-crimson/20 mix-blend-color-burn group-hover/card:opacity-0 transition-opacity duration-250 pointer-events-none z-10" />
+                                <div className="absolute inset-0 bg-crimson/30 mix-blend-multiply group-hover/card:opacity-0 transition-opacity duration-250 pointer-events-none z-10" />
                                 {/* Vignette Overlay */}
-                                <div className="absolute inset-0 shadow-[inset_0_0_24px_rgba(10,10,11,1)] group-hover/card:shadow-[inset_0_0_12px_rgba(10,10,11,0.5)] transition-shadow duration-250 pointer-events-none z-20" />
+                                <div className="absolute inset-0 shadow-[inset_0_0_12px_rgba(10,10,11,0.8)] group-hover/card:shadow-[inset_0_0_0px_rgba(10,10,11,0)] transition-shadow duration-250 pointer-events-none z-20" />
                               </>
                             ) : (
                               <>
@@ -112,7 +112,7 @@ export default function TeamPage() {
                                   </span>
                                 </div>
                                 {/* Vignette Overlay */}
-                                <div className="absolute inset-0 shadow-[inset_0_0_24px_rgba(10,10,11,1)] pointer-events-none z-30" />
+                                <div className="absolute inset-0 shadow-[inset_0_0_16px_rgba(10,10,11,1)] pointer-events-none z-30" />
                               </>
                             )}
                           </div>

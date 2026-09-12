@@ -16,16 +16,16 @@ export function Button({
   ...props
 }: ButtonProps) {
   const variants = {
-    primary: "bg-crimson text-void hover:bg-crimson-bright font-bold tracking-wider uppercase",
+    primary: "bg-crimson text-void hover:bg-crimson-bright font-bold tracking-wider uppercase border border-transparent",
     secondary: "bg-obsidian-raised text-ink hover:bg-chrome-dark border border-chrome-dark",
-    outline: "border border-crimson text-crimson hover:bg-crimson hover:text-void",
-    ghost: "text-steel hover:text-ink hover:bg-obsidian-raised",
+    outline: "border border-crimson text-crimson hover:bg-crimson hover:text-void font-bold tracking-wider uppercase",
+    ghost: "text-steel hover:text-ink hover:bg-obsidian-raised border border-transparent",
   };
 
   const sizes = {
-    sm: "px-3 py-1.5 text-sm",
-    md: "px-6 py-2",
-    lg: "px-8 py-3 text-lg",
+    sm: "px-4 py-2 text-sm",
+    md: "px-8 py-3",
+    lg: "px-10 py-4 text-lg",
   };
 
   return (
@@ -33,8 +33,7 @@ export function Button({
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
       className={cn(
-        "inline-flex items-center justify-center font-ui transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-crimson uppercase",
-        "clip-edge", // Assuming we will add a global clip path class if needed, or just sharp corners
+        "inline-flex items-center justify-center font-ui transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-crimson uppercase rounded-sm",
         variants[variant],
         sizes[size],
         className

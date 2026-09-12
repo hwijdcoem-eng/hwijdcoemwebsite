@@ -14,11 +14,11 @@ export default function Home() {
     <div className="w-full">
       {/* Hero Section */}
       <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
-        {/* Abstract Background Elements */}
-        <div className="absolute inset-0 z-0 pointer-events-none flex items-center justify-center">
-          <img src="/logo.jpg" alt="" className="absolute w-[500px] h-[500px] object-cover rounded-full opacity-40 mix-blend-screen" />
-          <div className="absolute w-[800px] h-[800px] rounded-full border border-line/20 animate-[pulse_4s_cubic-bezier(0.4,0,0.6,1)_infinite]" />
-          <div className="absolute w-[600px] h-[600px] rounded-full border border-signal/10" />
+        {/* Abstract Background Wordmark Texture */}
+        <div className="absolute -bottom-20 -right-20 z-0 pointer-events-none opacity-5 mix-blend-overlay rotate-0 flex items-end justify-end overflow-hidden">
+          <h2 className="font-display font-black text-[10rem] md:text-[14rem] leading-[0.8] text-steel tracking-tighter text-right whitespace-nowrap">
+            HACK WITH<br />INDIA<br />JDCOEM
+          </h2>
         </div>
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
