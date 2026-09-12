@@ -2,15 +2,20 @@
 
 **Branch:** `feat/page-gallery`
 
-## Scope of Work
-- Edit the `/gallery` route.
-- Build the Masonry gallery layout (`GalleryGrid`, `GalleryItem`).
-- Implement image filtering with shared-layout animations (Motion for React).
-- Build a Lightbox component for clicking images.
-- **Allowed Files:** `components/gallery/*`, `app/gallery/page.tsx`, `data/gallery.ts`.
+## Scope of Work & Creative Direction
+This branch builds a photo gallery for past events. 
+
+### 1. Masonry & Lightbox
+- Implement a Masonry grid layout for photos.
+- Implement a Lightbox for viewing images in full screen.
+- Ensure all photos are pulled from `src/data/gallery.ts`.
+
+### 2. Differentiator: Shared-Layout Animation
+- When filtering images by category, **do NOT just fade-out/fade-in the whole grid.**
+- Filter transitions must **reflow the grid with a shared-layout animation** (using Motion for React's `layout` prop). This is one of the few places heavier motion is justified because it directly shows what changed.
 
 ## ⚠️ Zero Merge Conflict Rules (CRITICAL)
-1. **Strict File Boundaries:** Only edit the files explicitly listed in your scope. Do not touch `Navbar`, `Footer`, or other shared UI components if they are not in your scope.
-2. **No Dependency Changes:** Do NOT run `npm install` or modify `package.json`. If you need a library (like `lucide-react` or `framer-motion`), ask the Team Lead.
-3. **No Drive-by Fixes:** If you see a typo in someone else's code, ignore it or tell them. Do not fix it in your branch.
-4. **Stay Updated:** Run `git fetch origin` and `git merge origin/develop` frequently to pull in shared components.
+1. **Strict File Boundaries:** Only edit `app/gallery/page.tsx`, `components/gallery/*`, and `data/gallery.ts`.
+2. **No Dependency Changes:** Do NOT run `npm install` or modify `package.json`.
+3. **No Drive-by Fixes:** Do not fix code outside your scope.
+4. **Stay Updated:** Run `git fetch origin` and `git merge origin/develop` frequently.
