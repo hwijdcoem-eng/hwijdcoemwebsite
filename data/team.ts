@@ -15,9 +15,10 @@ export type TeamMember = {
   role: string;
   category: TeamCategory;
   departmentYear: string;
-  avatarUrl?: string;
-  githubUrl?: string;
-  twitterUrl?: string;
+  imageUrl?: string;
+  email?: string;
+  linkedinUrl?: string;
+  bio?: string;
 };
 
 export const teamData: TeamMember[] = [

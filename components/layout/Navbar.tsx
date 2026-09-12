@@ -15,6 +15,7 @@ const navLinks = [
   { href: "/gallery", label: "Gallery" },
   { href: "/community", label: "Community" },
   { href: "/certificates", label: "Certificates" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export function Navbar() {
@@ -26,7 +27,7 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link href="/" className="font-display font-bold text-xl tracking-wider text-ink flex-shrink-0 flex items-center">
-            <span className="w-2 h-2 bg-crimson rounded-full mr-2 animate-pulse" />
+            <img src="/logo.png" alt="HWI Logo" className="w-8 h-8 mr-3 object-contain" />
             HWI<span className="text-crimson">.</span>
           </Link>
 
