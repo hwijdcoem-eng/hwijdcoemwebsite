@@ -1,0 +1,15 @@
+{
+  "eventName": "Ideathon 2026",
+  "participants": [
+    {
+      "name": "Jane Doe",
+      "usn": "ID202601",
+      "certificate": "participation"
+    },
+    {
+      "name": "John Smith",
+      "usn": "ID202602",
+      "certificate": "participation"
+    }
+  ]
+}
