@@ -44,7 +44,7 @@ export default function TeamPage() {
     }
   };
 
-  const tickBase = "absolute bg-crimson/40 group-hover/card:bg-crimson group-focus-visible/card:bg-crimson group-hover/card:shadow-[0_0_8px_#FF1053] group-focus-visible/card:shadow-[0_0_8px_#FF1053] z-20 pointer-events-none transition-all duration-250 ease-out motion-reduce:transition-none";
+  const tickBase = "absolute bg-crimson/80 group-hover/card:bg-crimson group-focus-visible/card:bg-crimson group-hover/card:shadow-[0_0_8px_#FF1053] group-focus-visible/card:shadow-[0_0_8px_#FF1053] z-20 pointer-events-none transition-all duration-250 ease-out motion-reduce:transition-none";
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
@@ -94,17 +94,17 @@ export default function TeamPage() {
                       className="group/card outline-none opacity-100 group-hover/grid:opacity-85 group-focus-within/grid:opacity-85 hover:!opacity-100 focus-within:!opacity-100 transition-opacity duration-250 ease-out motion-reduce:transition-none"
                       tabIndex={0}
                     >
-                      <Card className="h-full flex flex-col relative items-center text-center p-8 border-chrome-dark/30 group-hover/card:border-chrome-light/50 group-focus-visible/card:border-chrome-light/50 transition-colors duration-250 ease-out motion-reduce:transition-none" withGlow={isLead}>
+                      <Card padding="lg" className="h-full flex flex-col relative items-center text-center group-hover/card:border-chrome-light/50 group-focus-visible/card:border-chrome-light/50 transition-colors duration-250 ease-out motion-reduce:transition-none" withGlow={isLead}>
                         
                         {/* Avatar Frame */}
                         <div className="relative w-32 h-32 mb-8 shrink-0">
                           {/* Outer chrome gradient ring */}
-                          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-chrome-dark/80 to-void p-[2px] group-hover/card:from-chrome-light group-focus-visible/card:from-chrome-light transition-colors duration-250 ease-out motion-reduce:transition-none">
+                          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-chrome-light/40 to-chrome-dark/40 p-[2px] group-hover/card:from-chrome-light group-focus-visible/card:from-chrome-light transition-colors duration-250 ease-out motion-reduce:transition-none">
                             <div className="w-full h-full rounded-full bg-void" />
                           </div>
                           
                           {/* Inner crimson ring */}
-                          <div className="absolute inset-[3px] rounded-full border border-crimson/30 group-hover/card:border-crimson group-focus-visible/card:border-crimson group-hover/card:shadow-[0_0_15px_rgba(255,16,83,0.5)] group-focus-visible/card:shadow-[0_0_15px_rgba(255,16,83,0.5)] transition-all duration-250 ease-out motion-reduce:transition-none z-10 pointer-events-none" />
+                          <div className="absolute inset-[3px] rounded-full border border-crimson/60 group-hover/card:border-crimson group-focus-visible/card:border-crimson group-hover/card:shadow-[0_0_15px_rgba(255,16,83,0.5)] group-focus-visible/card:shadow-[0_0_15px_rgba(255,16,83,0.5)] transition-all duration-250 ease-out motion-reduce:transition-none z-10 pointer-events-none" />
 
                           {/* N/E/S/W tick marks */}
                           <div className={`${tickBase} top-0 left-1/2 -translate-x-1/2 -translate-y-[2px] group-hover/card:-translate-y-[4px] group-focus-visible/card:-translate-y-[4px] w-[2px] h-2`} />
