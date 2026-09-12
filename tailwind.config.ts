@@ -9,21 +9,17 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        void: "var(--bg-void)",
-        panel: "var(--bg-panel)",
-        line: "var(--line)",
-        ink: {
-          DEFAULT: "var(--ink)",
-          dim: "var(--ink-dim)",
-        },
-        signal: {
-          DEFAULT: "var(--signal)",
-          warm: "var(--signal-warm)",
-        },
+        void: "#0A0A0B",
+        obsidian: { DEFAULT: "#141417", raised: "#1C1C20" },
+        crimson: { DEFAULT: "#FF1053", bright: "#FF3D77", deep: "#B80B3D" },
+        chrome: { light: "#D8D8DE", dark: "#6E6E76" },
+        ink: "#F5F5F7",
+        steel: "#9A9AA3",
       },
       fontFamily: {
-        sans: ["var(--font-inter)", "sans-serif"],
-        display: ["var(--font-space-grotesk)", "sans-serif"],
+        display: ["var(--font-orbitron)", "sans-serif"],
+        ui: ["var(--font-rajdhani)", "sans-serif"],
+        glitch: ["var(--font-press-start)", "monospace"],
       },
       borderRadius: {
         sm: "4px",

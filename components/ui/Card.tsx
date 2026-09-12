@@ -3,10 +3,11 @@ import { cn } from "../../utils/cn";
 
 export interface CardProps extends HTMLAttributes<HTMLDivElement> {
   padding?: "none" | "sm" | "md" | "lg";
+  withGlow?: boolean;
 }
 
 export const Card = forwardRef<HTMLDivElement, CardProps>(
-  ({ className, padding = "md", children, ...props }, ref) => {
+  ({ className, padding = "md", withGlow = false, children, ...props }, ref) => {
     const paddings = {
       none: "p-0",
       sm: "p-4",
@@ -18,13 +19,30 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
       <div
         ref={ref}
         className={cn(
-          "rounded-lg bg-panel border border-line overflow-hidden",
-          paddings[padding],
+          "relative group bg-gradient-to-br from-chrome-light to-chrome-dark p-[1px]",
+          "transition-all duration-300",
+          withGlow && "hover:shadow-[0_0_20px_rgba(255,16,83,0.3)]",
           className
         )}
+        style={{
+          clipPath: "polygon(0 0, 100% 0, 100% 100%, 16px 100%, 0 calc(100% - 16px))"
+        }}
         {...props}
       >
-        {children}
+        <div 
+          className={cn(
+            "bg-obsidian w-full h-full relative overflow-hidden transition-colors duration-300 group-hover:bg-obsidian-raised",
+            paddings[padding]
+          )}
+          style={{
+            clipPath: "polygon(0 0, 100% 0, 100% 100%, 15px 100%, 0 calc(100% - 15px))"
+          }}
+        >
+          {withGlow && (
+            <div className="absolute bottom-0 left-0 w-8 h-8 bg-crimson opacity-0 group-hover:opacity-40 blur-xl transition-opacity duration-300 pointer-events-none" />
+          )}
+          {children}
+        </div>
       </div>
     );
   }

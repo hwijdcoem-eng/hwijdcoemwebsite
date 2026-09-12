@@ -14,7 +14,7 @@ export function SectionHeading({
   return (
     <Component
       className={cn(
-        "font-display font-bold text-ink tracking-tight",
+        "font-display font-bold text-ink tracking-normal uppercase",
         {
           "text-4xl md:text-6xl": Component === "h1",
           "text-3xl md:text-4xl": Component === "h2",

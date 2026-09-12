@@ -3,23 +3,22 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --bg-void: #0A0E12;
-    --bg-panel: #12171D;
-    --line: #22303A;
-    --ink: #E8EDF0;
-    --ink-dim: #8CA0AC;
-    --signal: #4FD1C5;
-    --signal-warm: #E8A33D;
-  }
-
   body {
-    @apply bg-void text-ink font-sans antialiased selection:bg-signal selection:text-void;
+    @apply bg-void text-ink font-ui antialiased selection:bg-crimson selection:text-ink;
+    background-color: #0A0A0B;
+    background-image: 
+      radial-gradient(#141417 1px, transparent 1px),
+      radial-gradient(#141417 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-position: 0 0, 12px 12px;
   }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+  .clip-edge {
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
   }
 }
