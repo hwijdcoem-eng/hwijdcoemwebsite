@@ -28,7 +28,7 @@ export function Navbar() {
         <div className="flex justify-between items-center h-16">
           <Link href="/" className="font-display font-bold text-xl tracking-wider text-ink flex-shrink-0 flex items-center group">
             <img src="/logo.jpg" alt="HWI Logo" className="w-8 h-8 mr-3 object-contain rounded-full transition-transform duration-700 group-hover:rotate-[360deg]" />
-            HWI<span className="text-crimson">.</span>
+            HWI JDCOEM<span className="text-crimson">.</span>
           </Link>
 
           {/* Desktop Nav */}
