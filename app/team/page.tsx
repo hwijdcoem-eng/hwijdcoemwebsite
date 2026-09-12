@@ -166,7 +166,7 @@ export default function TeamPage() {
                         </p>
                         
                         <p className="text-steel font-ui text-sm mb-6 flex-grow [&_a]:text-steel [&_a]:no-underline pointer-events-none">
-                          {member.bio || `${member.departmentYear.replace('/', ' / ')} representative.`}
+                          {member.bio || member.departmentYear.replace('/', ' / ')}
                         </p>
 
                         {/* Social Links */}
