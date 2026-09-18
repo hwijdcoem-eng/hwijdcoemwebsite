@@ -32,8 +32,10 @@ export default function RootLayout({
         <SplashScreen />
         <DataStreamBackground />
         <Navbar />
-        <main className="flex-grow pt-16">{children}</main>
-        <Footer />
+        <main className="relative z-10 flex-grow pt-16">{children}</main>
+        <div className="relative z-10">
+          <Footer />
+        </div>
       </body>
     </html>
   );
