@@ -100,7 +100,12 @@ const jsonLd = {
         "@type": "CollegeOrUniversity",
         name: "JD College of Engineering & Management, Nagpur",
       },
-      sameAs: ["https://hackwithindia.in"],
+      sameAs: [
+        "https://hackwithindia.in",
+        "https://in.linkedin.com/company/hackwithindia-jdcoem",
+        "https://www.instagram.com/hwi_jdcoem/",
+        "https://github.com/hwijdcoem-eng",
+      ],
     },
     {
       "@type": "WebSite",
