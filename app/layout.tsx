@@ -16,7 +16,8 @@ export const viewport: Viewport = {
   maximumScale: 1,
 };
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://hwijdcoem.com";
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://hwijdcoemwebsite.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
