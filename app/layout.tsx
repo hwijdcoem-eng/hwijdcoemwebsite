@@ -41,9 +41,9 @@ export const metadata: Metadata = {
   creator: "HWI JDCOEM",
   publisher: "Hack With India",
   icons: {
-    icon: "/jdcoem-logo.png",
-    shortcut: "/jdcoem-logo.png",
-    apple: "/jdcoem-logo.png",
+    icon: "/logo.jpg",
+    shortcut: "/logo.jpg",
+    apple: "/logo.jpg",
   },
   manifest: "/manifest.json",
   openGraph: {
