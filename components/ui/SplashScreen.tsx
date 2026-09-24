@@ -1,18 +1,26 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 export function SplashScreen() {
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
-    // Hide the splash screen after 1.5 seconds
-    const timer = setTimeout(() => {
-      setShow(false);
-    }, 1500);
-    return () => clearTimeout(timer);
-  }, []);
+    // Only show once per browser session so we don't penalize LCP on every page change
+    const hasSeenSplash = sessionStorage.getItem("hwi_splash_shown");
+    if (!hasSeenSplash) {
+      setShow(true);
+      sessionStorage.setItem("hwi_splash_shown", "true");
+      const timer = setTimeout(() => {
+        setShow(false);
+      }, shouldReduceMotion ? 200 : 1200);
+      return () => clearTimeout(timer);
+    }
+  }, [shouldReduceMotion]);
+
+  if (!show) return null;
 
   return (
     <AnimatePresence>
@@ -20,18 +28,19 @@ export function SplashScreen() {
         <motion.div 
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-void"
+          transition={{ duration: 0.4, ease: "easeInOut" }}
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-void pointer-events-none select-none"
+          aria-hidden="true"
         >
           <div className="relative flex flex-col items-center">
             {/* Glowing HUD Ring */}
             <motion.div
-              animate={{ rotate: 360 }}
+              animate={shouldReduceMotion ? undefined : { rotate: 360 }}
               transition={{ repeat: Infinity, duration: 4, ease: "linear" }}
               className="absolute inset-[-20%] border border-crimson/30 rounded-full border-t-crimson"
             />
             <motion.div
-              animate={{ rotate: -360 }}
+              animate={shouldReduceMotion ? undefined : { rotate: -360 }}
               transition={{ repeat: Infinity, duration: 6, ease: "linear" }}
               className="absolute inset-[-40%] border border-chrome-dark/20 rounded-full border-l-crimson"
             />
@@ -46,7 +55,7 @@ export function SplashScreen() {
               <motion.div 
                 initial={{ width: "0%" }}
                 animate={{ width: "100%" }}
-                transition={{ duration: 1.5, ease: "easeInOut" }}
+                transition={{ duration: shouldReduceMotion ? 0.2 : 1.2, ease: "easeInOut" }}
                 className="h-full bg-crimson"
               />
             </div>

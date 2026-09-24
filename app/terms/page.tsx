@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import { SectionHeading } from "../../components/ui/SectionHeading";
 import { Card } from "../../components/ui/Card";
+
+export const metadata: Metadata = {
+  title: "Terms & Conditions",
+  description:
+    "Operational rules of engagement, code of conduct, and terms of service for the Hack With India (HWI) JDCOEM platform.",
+};
 
 export default function TermsPage() {
   return (

@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import { SectionHeading } from "../../components/ui/SectionHeading";
 import { Card } from "../../components/ui/Card";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy",
+  description:
+    "Official Privacy Policy and data protection protocols for the Hack With India (HWI) JDCOEM platform.",
+};
 
 export default function PrivacyPolicyPage() {
   return (

@@ -1,10 +1,12 @@
 import fs from "fs";
 import path from "path";
+import type { Metadata } from "next";
 import GalleryGrid from "./GalleryGrid";
 
-export const metadata = {
-  title: "Gallery | HWI JDCOEM",
-  description: "Photos from the official Hack With India chapter at JDCOEM.",
+export const metadata: Metadata = {
+  title: "Chapter Gallery & Highlights",
+  description:
+    "Photo gallery and visual highlights from the official Hack With India chapter at JDCOEM.",
 };
 
 export default function GalleryPage() {

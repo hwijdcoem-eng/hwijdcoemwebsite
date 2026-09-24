@@ -1,5 +1,15 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "../components/ui/Button";
+
+export const metadata: Metadata = {
+  title: "404 - Sector Not Found | HWI JDCOEM",
+  description: "The requested coordinates do not exist in this database.",
+  robots: {
+    index: false,
+    follow: true,
+  },
+};
 
 export default function NotFound() {
   return (
