@@ -4,36 +4,39 @@ import { motion } from "framer-motion";
 
 export default function Loading() {
   return (
-    <div className="min-h-[60vh] flex flex-col items-center justify-center relative py-16" aria-live="polite" aria-busy="true">
-      {/* Top ambient scan beam */}
-      <div className="w-48 h-0.5 bg-obsidian-raised overflow-hidden relative mb-8">
-        <motion.div
-          initial={{ x: "-100%" }}
-          animate={{ x: "100%" }}
-          transition={{ repeat: Infinity, duration: 1.2, ease: "easeInOut" }}
-          className="w-1/2 h-full bg-gradient-to-r from-transparent via-crimson to-transparent"
-        />
-      </div>
-
-      {/* Tactical spinner */}
-      <div className="relative w-16 h-16 flex items-center justify-center">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-void">
+      <div className="relative flex flex-col items-center">
+        {/* Glowing HUD Ring */}
         <motion.div
           animate={{ rotate: 360 }}
-          transition={{ repeat: Infinity, duration: 2.5, ease: "linear" }}
-          className="absolute inset-0 rounded-full border border-crimson/20 border-t-crimson"
+          transition={{ repeat: Infinity, duration: 4, ease: "linear" }}
+          className="absolute inset-[-20%] border border-crimson/30 rounded-full border-t-crimson"
         />
         <motion.div
           animate={{ rotate: -360 }}
-          transition={{ repeat: Infinity, duration: 3.5, ease: "linear" }}
-          className="absolute inset-2 rounded-full border border-steel/20 border-b-crimson/60"
+          transition={{ repeat: Infinity, duration: 6, ease: "linear" }}
+          className="absolute inset-[-40%] border border-chrome-dark/20 rounded-full border-l-crimson"
         />
-        <div className="w-2 h-2 rounded-full bg-crimson animate-ping" />
-      </div>
+        
+        {/* Central Logo Placeholder */}
+        <div className="w-24 h-24 rounded-full bg-black border-2 border-crimson flex flex-col items-center justify-center shadow-[0_0_20px_rgba(255,16,83,0.5)]">
+          <span className="font-display font-bold text-ink text-xl uppercase leading-none">HWI</span>
+          <span className="font-display font-bold text-crimson text-[10px] uppercase mt-1">JDCOEM</span>
+        </div>
 
-      {/* Status label */}
-      <div className="mt-6 flex items-center gap-2 font-ui text-xs uppercase tracking-[0.25em] text-steel">
-        <span className="w-1.5 h-1.5 bg-crimson rounded-full animate-pulse" />
-        <span>Synchronizing Tactical Feed...</span>
+        {/* Tactical Loading Bar */}
+        <div className="mt-12 w-64 h-1 bg-obsidian-raised overflow-hidden">
+          <motion.div 
+            initial={{ width: "0%" }}
+            animate={{ width: "100%" }}
+            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+            className="h-full bg-crimson"
+          />
+        </div>
+        <div className="mt-4 font-ui text-crimson text-sm tracking-widest uppercase flex items-center gap-2">
+          <span className="w-2 h-2 bg-crimson animate-pulse rounded-full" />
+          SYSTEM INIT...
+        </div>
       </div>
     </div>
   );
