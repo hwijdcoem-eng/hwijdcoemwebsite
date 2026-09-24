@@ -41,10 +41,11 @@ export const metadata: Metadata = {
   creator: "HWI JDCOEM",
   publisher: "Hack With India",
   icons: {
-    icon: "/hwi-logo.png",
-    shortcut: "/hwi-logo.png",
-    apple: "/hwi-logo.png",
+    icon: "/jdcoem-logo.png",
+    shortcut: "/jdcoem-logo.png",
+    apple: "/jdcoem-logo.png",
   },
+  manifest: "/manifest.json",
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -119,13 +120,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${orbitron.variable} ${rajdhani.variable} ${pressStart.variable} overflow-x-hidden`}>
-      <head>
+      <body className="text-ink font-ui antialiased selection:bg-crimson selection:text-ink flex flex-col min-h-screen overflow-x-hidden bg-void">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-      </head>
-      <body className="text-ink font-ui antialiased selection:bg-crimson selection:text-ink flex flex-col min-h-screen overflow-x-hidden bg-void">
         <SplashScreen />
         <DataStreamBackground />
         <Navbar />
