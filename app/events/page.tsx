@@ -21,7 +21,7 @@ const events = [
     time: "1:00 - 5:30 PM", //[cite: 1]
     venue: "JDCOEM, Nagpur",
     status: "Active", //[cite: 1]
-    bannerSrc: "events/whatsapp-image.jpeg", 
+    bannerSrc: "WhatsApp Image 2026-09-27 at 6.21.36 PM.jpeg", 
     accentColor: "text-crimson",
     glowColor: "rgba(220,38,38,0.15)",
     
