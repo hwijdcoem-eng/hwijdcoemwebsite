@@ -49,7 +49,7 @@ const events: EventItem[] = [
     time: "1:00 - 5:30 PM",
     venue: "JDCOEM, Nagpur",
     status: "Registration Open", 
-    bannerSrc: "/whatsapp-image.jpeg", 
+    bannerSrc: "WhatsApp Image 2026-09-27 at 6.21.36 PM.jpeg", 
     accentColor: "text-crimson",
     glowColor: "rgba(220,38,38,0.15)",
     registerUrl: "https://docs.google.com/forms/d/e/1FAIpQLSfpKsk1UlRekAWU_Bp-1WkQX5WjZQ-1U3QSgxQit7LUkz2JcA/viewform",
