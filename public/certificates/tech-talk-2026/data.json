@@ -1,0 +1,15 @@
+{
+  "eventName": "Tech Talk 2026",
+  "participants": [
+    {
+      "name": "Sarah Connor",
+      "usn": "TT202601",
+      "certificate": "participation"
+    },
+    {
+      "name": "Kyle Reese",
+      "usn": "TT202602",
+      "certificate": "participation"
+    }
+  ]
+}

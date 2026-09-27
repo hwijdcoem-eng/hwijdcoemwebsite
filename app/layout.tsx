@@ -1,15 +1,122 @@
-import type { Metadata } from "next";
-import { Inter, Space_Grotesk } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Orbitron, Rajdhani, Press_Start_2P } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "../components/layout/Navbar";
 import { Footer } from "../components/layout/Footer";
+import { SplashScreen } from "../components/ui/SplashScreen";
+import { DataStreamBackground } from "../components/ui/DataStreamBackground";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space-grotesk" });
+const orbitron = Orbitron({ subsets: ["latin"], variable: "--font-orbitron" });
+const rajdhani = Rajdhani({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-rajdhani" });
+const pressStart = Press_Start_2P({ subsets: ["latin"], weight: ["400"], variable: "--font-press-start" });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+};
+
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://hwijdcoemwebsite.vercel.app";
 
 export const metadata: Metadata = {
-  title: "HWI JDCOEM",
-  description: "BUILD. CONNECT. CREATE.",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "HWI JDCOEM | Hack With India Student Chapter",
+    template: "%s | HWI JDCOEM",
+  },
+  description:
+    "Official Hack With India (HWI) student chapter at JD College of Engineering & Management, Nagpur. Fostering collegiate hackathons, open source, technical workshops, and verified certificates.",
+  keywords: [
+    "HWI JDCOEM",
+    "Hack With India",
+    "JDCOEM Nagpur",
+    "JD College of Engineering and Management",
+    "Nagpur Hackathons",
+    "Student Coding Club",
+    "HWI Certificates",
+    "Engineering Community Nagpur",
+    "Hackathon Portal",
+  ],
+  authors: [{ name: "HWI JDCOEM Web Team", url: siteUrl }],
+  creator: "HWI JDCOEM",
+  publisher: "Hack With India",
+  icons: {
+    icon: "/logo.jpg",
+    shortcut: "/logo.jpg",
+    apple: "/logo.jpg",
+  },
+  manifest: "/manifest.json",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: siteUrl,
+    siteName: "HWI JDCOEM",
+    title: "HWI JDCOEM | Hack With India Student Chapter",
+    description:
+      "Official student community of Hack With India at JD College of Engineering & Management, Nagpur. Build, connect, and innovate.",
+    images: [
+      {
+        url: "/event-banner.jpg",
+        width: 1200,
+        height: 630,
+        alt: "HWI JDCOEM Tactical Command Center",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "HWI JDCOEM | Hack With India Student Chapter",
+    description:
+      "Official student community of Hack With India at JD College of Engineering & Management, Nagpur.",
+    images: ["/event-banner.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "EducationalOrganization",
+      "@id": `${siteUrl}/#organization`,
+      name: "HWI JDCOEM",
+      alternateName: "Hack With India JDCOEM Chapter",
+      url: siteUrl,
+      logo: `${siteUrl}/hwi-logo.png`,
+      description:
+        "Official student tech chapter of Hack With India at JD College of Engineering & Management, Nagpur.",
+      parentOrganization: {
+        "@type": "CollegeOrUniversity",
+        name: "JD College of Engineering & Management, Nagpur",
+      },
+      sameAs: [
+        "https://hackwithindia.in",
+        "https://in.linkedin.com/company/hackwithindia-jdcoem",
+        "https://www.instagram.com/hwi_jdcoem/",
+        "https://github.com/hwijdcoem-eng",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
+      url: siteUrl,
+      name: "HWI JDCOEM Official Platform",
+      publisher: {
+        "@id": `${siteUrl}/#organization`,
+      },
+    },
+  ],
 };
 
 export default function RootLayout({
@@ -18,11 +125,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
-      <body className="bg-void text-ink font-sans antialiased selection:bg-signal selection:text-void flex flex-col min-h-screen">
+    <html lang="en" className={`${orbitron.variable} ${rajdhani.variable} ${pressStart.variable} overflow-x-hidden`}>
+      <body className="text-ink font-ui antialiased selection:bg-crimson selection:text-ink flex flex-col min-h-screen overflow-x-hidden bg-void">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <SplashScreen />
+        <DataStreamBackground />
         <Navbar />
-        <main className="flex-grow pt-16">{children}</main>
-        <Footer />
+        <main className="relative z-10 flex-grow pt-16">{children}</main>
+        <div className="relative z-10">
+          <Footer />
+        </div>
       </body>
     </html>
   );
