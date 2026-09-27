@@ -9,36 +9,44 @@ import { FiCalendar, FiClock, FiMapPin } from "react-icons/fi";
 
 const events = [
   {
-    id: 1,
-    title: "Global Hackathon 2026",
-    date: "October 15, 2026",
-    time: "48 Hours",
-    location: "HWI Main Campus & Virtual",
-    type: "Hackathon",
-    description: "Our flagship annual hackathon. Build the next big thing in 48 hours with hundreds of other engineers and designers.",
-    status: "Upcoming",
-  },
-  {
-    id: 2,
-    title: "Founder's Fireside Chat",
-    date: "November 2, 2026",
-    time: "6:00 PM - 8:00 PM",
-    location: "Innovation Lab",
-    type: "Networking",
-    description: "An intimate Q&A session with alumni founders who have successfully raised Series A rounds.",
-    status: "Registration Open",
-  },
-  {
-    id: 3,
-    title: "Intro to Physical Computing",
-    date: "November 10, 2026",
-    time: "2:00 PM - 5:00 PM",
-    location: "Hardware Shop",
-    type: "Workshop",
-    description: "Hands-on workshop covering the basics of Arduino, sensor integration, and rapid prototyping.",
-    status: "Waitlist",
+    id: "hackathon",
+    type: "Workshop & Hunt",
+    title: "Git, GitHub Workshop & Operation Hunt",
+    subtitle: "Inaugural Hackathon", 
+    description:
+      "Our very first hackathon — build real projects, compete in teams, and connect with mentors backed by the HWI industry ecosystem.",
+    
+    // ⬇️ UPDATED DATE & TIME
+    date: "01 Oct 2026", //[cite: 1]
+    time: "1:00 - 5:30 PM", //[cite: 1]
+    venue: "JDCOEM, Nagpur",
+    status: "Active", //[cite: 1]
+    bannerSrc: "events/whatsapp-image.jpeg", 
+    accentColor: "text-crimson",
+    glowColor: "rgba(220,38,38,0.15)",
+    
+    // ⬇️ NEW ADDITIONS FOR COUNTDOWN & REGISTRATION
+    registrationLink: "https://docs.google.com/forms/d/e/1FAIpQLSfpKsk1UlRekAWU_Bp-1WkQX5WjZQ-1U3QSgxQit7LUkz2JcA/viewform", // Scan the QR code to get this URL[cite: 1]
+    buttonText: "Register Now",
+    // Use ISO format for the countdown so JavaScript's Date() can easily parse it
+    countdownTarget: "2026-10-01T13:00:00+05:30", 
+
+    overview: [
+      "Open to all JDCOEM students across all departments and years.",
+      "Basics of Git & GitHub, version control, and practical usage.", //[cite: 1]
+      "Strictly solo participation.", //[cite: 1]
+      "Participants access HWI's industry mentor network.",
+      "Winners get trophies. Participants receive 2 certificates recognised by Hack With India." //[cite: 1]
+    ],
+    requirements: [
+      "Valid JDCOEM student ID required for participation.",
+      "Bring your own laptop and charger.",
+      "Basic programming knowledge recommended.",
+      "Registration fee: ₹50." //[cite: 1]
+    ],
   }
 ];
+  
 
 export default function EventsPage() {
   return (
@@ -52,6 +60,35 @@ export default function EventsPage() {
           are designed to push your skills and expand your network.
         </p>
       </div>
+       <div className="flex-shrink-0 border-t border-chrome-dark/40 px-7 py-5 flex items-center justify-between gap-4">
+          <button
+            onClick={onClose}
+            className="font-ui text-xs uppercase tracking-[0.15em] text-steel hover:text-ink transition-colors border border-chrome-dark/30 hover:border-steel/50 px-5 py-2.5"
+            style={{ clipPath: "polygon(0 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%)" }}
+          >
+            Close
+          </button>
+
+          {/* Checks if status is "Registration Open" OR "Active" */}
+          {event.status === "Registration Open" || event.status === "Active" ? (
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSfpKsk1UlRekAWU_Bp-1WkQX5WjZQ-1U3QSgxQit7LUkz2JcA/viewform"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button className="flex items-center gap-2 px-6">
+                Register Now <FiExternalLink size={13} />
+              </Button>
+            </a>
+          ) : (
+            <div
+              className="font-ui text-xs uppercase tracking-[0.1em] text-steel/50 border border-chrome-dark/20 px-5 py-2.5"
+              style={{ clipPath: "polygon(0 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%)" }}
+            >
+              Registration Opening Soon
+            </div>
+          )}
+        </div>
 
       <div className="space-y-6 max-w-4xl mx-auto">
         {events.map((event, index) => (
