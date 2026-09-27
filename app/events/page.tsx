@@ -40,31 +40,31 @@ type EventItem = {
 
 const events: EventItem[] = [
   {
-    id: "hackathon",
-    type: "Hackathon",
-    title: "Hack JDCOEM",
+    id: "git-github-workshop",
+    type: "Workshop & Hunt",
+    title: "Git, GitHub Workshop & Operation Hunt",
     subtitle: "Inaugural Hackathon",
-    description:
-      "Our very first hackathon — build real projects, compete in teams, and connect with mentors backed by the HWI industry ecosystem.",
-    date: "October 2026",
-    time: "TBA",
+    description: "Our very first hackathon — build real projects, compete in teams, and connect with mentors backed by the HWI industry ecosystem.",
+    date: "01 Oct 2026",
+    time: "1:00 - 5:30 PM",
     venue: "JDCOEM, Nagpur",
-    status: "Coming Soon",
-    bannerSrc: "/events-hackathon-wide.jpg",
+    status: "Registration Open", 
+    bannerSrc: "/whatsapp-image.jpeg", 
     accentColor: "text-crimson",
     glowColor: "rgba(220,38,38,0.15)",
+    registerUrl: "https://docs.google.com/forms/d/e/1FAIpQLSfpKsk1UlRekAWU_Bp-1WkQX5WjZQ-1U3QSgxQit7LUkz2JcA/viewform",
     overview: [
       "Open to all JDCOEM students across all departments and years.",
-      "Problem statements released 48 hours before the event starts.",
-      "Teams of 2–4 members. Solo registrations will be team-matched.",
-      "Participants access HWI's industry mentor network during the hackathon.",
-      "Winners receive certificates, prizes, and recognition on the HWI platform.",
+      "Basics of Git & GitHub, version control, and practical usage.",
+      "Strictly solo participation.",
+      "Participants access HWI's industry mentor network.",
+      "Winners get trophies. Participants receive 2 certificates recognised by Hack With India.",
     ],
     requirements: [
       "Valid JDCOEM student ID required for participation.",
       "Bring your own laptop and charger.",
       "Basic programming knowledge recommended.",
-      "Registration is completely free for all JDCOEM students.",
+      "Registration fee: ₹50.",
     ],
   },
   {
@@ -232,7 +232,7 @@ function EventModal({ event, onClose }: { event: EventItem; onClose: () => void 
             {[
               { icon: FiCalendar, label: "Date",  value: event.date },
               { icon: FiClock,    label: "Time",  value: event.time },
-              { icon: FiMapPin,   label: "Venue", value: "JDCOEM" },
+              { icon: FiMapPin,   label: "Venue", value: event.venue },
             ].map(({ icon: Icon, label, value }) => (
               <div key={label}
                 className="border border-chrome-dark/30 bg-obsidian/60 p-3"
@@ -309,6 +309,8 @@ function EventModal({ event, onClose }: { event: EventItem; onClose: () => void 
           >
             Close
           </button>
+          
+          {/* Automatically shows button if status is "Registration Open" AND a URL exists */}
           {event.status === "Registration Open" && event.registerUrl ? (
             <a href={event.registerUrl} target="_blank" rel="noopener noreferrer">
               <Button className="flex items-center gap-2 px-6">
