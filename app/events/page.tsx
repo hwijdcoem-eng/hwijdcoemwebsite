@@ -1,3 +1,12 @@
+"use client";
+
+import { SectionHeading } from "../../components/ui/SectionHeading";
+import { Card } from "../../components/ui/Card";
+import { Badge } from "../../components/ui/Badge";
+import { Button } from "../../components/ui/Button";
+import { motion } from "framer-motion";
+import { FiCalendar, FiClock, FiMapPin, FiExternalLink } from "react-icons/fi";
+
 const events = [
   {
     id: 1,
@@ -29,7 +38,6 @@ const events = [
     description: "Hands-on workshop covering the basics of Arduino, sensor integration, and rapid prototyping.",
     status: "Waitlist",
   },
-  // ⬇️ SEPARATED INTO ITS OWN OBJECT
   {
     id: "hackathon",
     type: "Workshop & Hunt",
@@ -64,52 +72,93 @@ const events = [
 
 export default function EventsPage() {
   return (
-    <div>
-      {/* ... your existing header code ... */}
-      <div className="mb-12">
-        <p>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      
+      {/* Page Header */}
+      <div className="mb-16 text-center">
+        <SectionHeading as="h1" className="mb-4">
+          Upcoming Events
+        </SectionHeading>
+        <p className="text-ink-dim max-w-2xl mx-auto">
+          From 48-hour hackathons to intimate founder fireside chats, our events 
           are designed to push your skills and expand your network.
         </p>
       </div>
 
+      {/* Events List */}
       <div className="space-y-6 max-w-4xl mx-auto">
         {events.map((event, index) => (
-          // ⬇️ EVERYTHING USING 'event.' MUST GO INSIDE THIS MAP FUNCTION
-          <div key={event.id} className="bg-chrome-dark/10 rounded-lg overflow-hidden">
-            
-            {/* Your event card details (title, description, etc) would go here */}
-            
-            {/* THE BUTTON CODE MOVED INSIDE THE LOOP */}
-            <div className="flex-shrink-0 border-t border-chrome-dark/40 px-7 py-5 flex items-center justify-between gap-4">
-              <button
-                onClick={() => console.log("Close clicked")} // Ensure onClose is defined in your actual component
-                className="font-ui text-xs uppercase tracking-[0.15em] text-steel hover:text-ink transition-colors border border-chrome-dark/30 hover:border-steel/50 px-5 py-2.5"
-                style={{ clipPath: "polygon(0 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%)" }}
-              >
-                Close
-              </button>
+          <motion.div
+            key={event.id}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+          >
+            <Card className="hover:border-signal transition-colors duration-300 overflow-hidden">
+              
+              {/* Card Main Content */}
+              <div className="p-6">
+                <div className="flex flex-wrap items-center gap-3 mb-3">
+                  <Badge variant={event.status === "Upcoming" ? "default" : "outline"}>
+                    {event.status}
+                  </Badge>
+                  <span className="text-sm font-medium text-signal">{event.type}</span>
+                </div>
+                <h3 className="font-display font-bold text-2xl text-ink mb-3">
+                  {event.title}
+                </h3>
+                <p className="text-ink-dim mb-6">{event.description}</p>
+                
+                <div className="flex flex-wrap gap-4 text-sm text-ink-dim">
+                  <div className="flex items-center gap-2">
+                    <FiCalendar className="text-signal" />
+                    {event.date}
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <FiClock className="text-signal" />
+                    {event.time}
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <FiMapPin className="text-signal" />
+                    {/* Handles both 'location' and 'venue' properties smoothly */}
+                    {event.location || event.venue}
+                  </div>
+                </div>
+              </div>
 
-              {/* Added fallback to event.registrationLink since that's what you named it in the array */}
-              {event.status === "Registration Open" || event.status === "Active" ? (
-                <a
-                  href={event.registrationLink || event.registerUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Button className="flex items-center gap-2 px-6">
-                    Register Now <FiExternalLink size={13} />
-                  </Button>
-                </a>
-              ) : (
-                <div
-                  className="font-ui text-xs uppercase tracking-[0.1em] text-steel/50 border border-chrome-dark/20 px-5 py-2.5"
+              {/* Custom Action Bar (Buttons) */}
+              <div className="flex-shrink-0 border-t border-chrome-dark/40 px-7 py-5 flex items-center justify-between gap-4 bg-chrome-dark/5">
+                <button
+                  onClick={() => console.log(`Close clicked for ${event.title}`)}
+                  className="font-ui text-xs uppercase tracking-[0.15em] text-steel hover:text-ink transition-colors border border-chrome-dark/30 hover:border-steel/50 px-5 py-2.5"
                   style={{ clipPath: "polygon(0 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%)" }}
                 >
-                  Registration Opening Soon
-                </div>
-              )}
-            </div>
-          </div>
+                  Close
+                </button>
+
+                {event.status === "Registration Open" || event.status === "Active" ? (
+                  <a
+                    href={event.registrationLink || "#"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button className="flex items-center gap-2 px-6">
+                      Register Now <FiExternalLink size={13} />
+                    </Button>
+                  </a>
+                ) : (
+                  <div
+                    className="font-ui text-xs uppercase tracking-[0.1em] text-steel/50 border border-chrome-dark/20 px-5 py-2.5"
+                    style={{ clipPath: "polygon(0 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%)" }}
+                  >
+                    Registration Opening Soon
+                  </div>
+                )}
+              </div>
+              
+            </Card>
+          </motion.div>
         ))}
       </div>
     </div>
