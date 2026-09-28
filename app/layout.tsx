@@ -6,6 +6,7 @@ import { Footer } from "../components/layout/Footer";
 import { SplashScreen } from "../components/ui/SplashScreen";
 import { DataStreamBackground } from "../components/ui/DataStreamBackground";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const orbitron = Orbitron({ subsets: ["latin"], variable: "--font-orbitron" });
 const rajdhani = Rajdhani({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-rajdhani" });
@@ -140,6 +141,7 @@ export default function RootLayout({
           <Footer />
         </div>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
