@@ -49,7 +49,7 @@ const events: EventItem[] = [
     time: "1:00 - 5:30 PM",
     venue: "JDCOEM, Nagpur",
     status: "Registration Open", 
-    bannerSrc: "WhatsApp Image 2026-09-27 at 6.21.36 PM.jpeg", 
+    bannerSrc: "/github-workshop-banner.png", 
     accentColor: "text-crimson",
     glowColor: "rgba(220,38,38,0.15)",
     registerUrl: "https://docs.google.com/forms/d/e/1FAIpQLSfpKsk1UlRekAWU_Bp-1WkQX5WjZQ-1U3QSgxQit7LUkz2JcA/viewform",
@@ -214,7 +214,7 @@ function EventModal({ event, onClose }: { event: EventItem; onClose: () => void 
             <img
               src={event.bannerSrc}
               alt={event.title}
-              className="w-full h-56 object-cover block transition-transform duration-700 group-hover:scale-105"
+              className="w-full h-56 object-contain bg-[#0d0d0d] block transition-transform duration-700 group-hover:scale-105"
             />
             {/* Scan overlay */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -494,7 +494,7 @@ export default function EventsPage() {
                         <motion.img
                           src={event.bannerSrc}
                           alt={event.title}
-                          className="w-full h-full object-cover"
+                          className="w-full h-full object-contain bg-[#0d0d0d]"
                           animate={{ scale: isActive ? 1 : 1.04 }}
                           transition={{ duration: 0.5 }}
                         />

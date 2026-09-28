@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Button } from "../ui/Button";
 import Link from "next/link";
-import { FiCalendar, FiArrowRight, FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { FiCalendar, FiArrowRight, FiChevronLeft, FiChevronRight, FiExternalLink } from "react-icons/fi";
 
 // ─── Event data ──────────────────────────────────────────────────────────────
 type EventItem = {
@@ -19,22 +19,24 @@ type EventItem = {
   status: "Coming Soon" | "Registration Open" | "Ongoing" | "Completed";
   bannerSrc: string;
   accentColor: string; // tailwind arbitrary text color for title
+  registerUrl?: string;
 };
 
 const events: EventItem[] = [
   {
-    id: "hackathon",
+    id: "git-github-workshop",
     label: "Inaugural Event",
-    title: "Hack JDCOEM",
-    subtitle: "Inaugural Hackathon",
+    title: "Git & GitHub",
+    subtitle: "Workshop & Operation Hunt",
     description:
-      "Our very first hackathon is on the horizon. Build real projects, connect with industry mentors via the HWI ecosystem, and compete alongside the best student developers at JDCOEM.",
-    date: "Oct 2026",
-    targetDate: new Date("2026-10-15T09:00:00"),
+      "Learn the basics of Git & GitHub, version control, and real-world collaboration. Then test your knowledge in Operation Hunt.",
+    date: "01 Oct 2026",
+    targetDate: new Date("2026-10-01T13:00:00"),
     venue: "JDCOEM, Nagpur",
-    status: "Coming Soon",
-    bannerSrc: "/event-hackathon.jpg",
-    accentColor: "text-crimson",
+    status: "Registration Open",
+    bannerSrc: "/github-workshop-poster.jpg",
+    accentColor: "text-[#4ade80]",
+    registerUrl: "https://docs.google.com/forms/d/1VgjbG-IWzieMR_V4qAbxKngM8Hu7rENGNVj0RkT5Fzk/viewform",
   },
   {
     id: "ideathon",
@@ -236,13 +238,23 @@ export function EventCarousel() {
                   </div>
                 </div>
 
-                <Link href="/events">
-                  <Button size="lg" className="flex items-center gap-2 group w-fit">
-                    <FiCalendar size={16} />
-                    View Events
-                    <FiArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
-                  </Button>
-                </Link>
+                {activeEvent.registerUrl ? (
+                  <a href={activeEvent.registerUrl} target="_blank" rel="noopener noreferrer">
+                    <Button size="lg" className="flex items-center gap-2 group w-fit">
+                      <FiExternalLink size={16} />
+                      Register Now
+                      <FiArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+                    </Button>
+                  </a>
+                ) : (
+                  <Link href="/events">
+                    <Button size="lg" className="flex items-center gap-2 group w-fit">
+                      <FiCalendar size={16} />
+                      View Events
+                      <FiArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+                    </Button>
+                  </Link>
+                )}
               </motion.div>
             </AnimatePresence>
 

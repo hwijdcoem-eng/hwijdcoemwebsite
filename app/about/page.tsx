@@ -68,16 +68,16 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen">
 
-      {/* ── Hero: Banner left + Content right ───────────────────────────────── */}
+      {/* ── Hero: Banner Top + Content Bottom ───────────────────────────────── */}
       <section className="py-16 border-b border-chrome-dark/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-16 items-center">
+          <div className="flex flex-col gap-12 items-center">
 
-            {/* ── LEFT: Compact banner frame (2/5 width) ── */}
+            {/* ── TOP: Full-width banner frame ── */}
             <motion.div
-              className="lg:col-span-2"
-              initial={{ opacity: 0, x: shouldReduceMotion ? 0 : -24 }}
-              animate={{ opacity: 1, x: 0 }}
+              className="w-full max-w-5xl mx-auto"
+              initial={{ opacity: 0, y: shouldReduceMotion ? 0 : -24 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
               <div className="relative">
@@ -105,7 +105,7 @@ export default function AboutPage() {
                   style={{ clipPath: "polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%)" }}
                 >
                   <img
-                    src="/about-banner.jpg"
+                    src="/about-banner-official.png"
                     alt="HWI JDCOEM – Official Hack With India Chapter at JD College of Engineering & Management, Nagpur"
                     className="w-full h-auto object-cover block"
                   />
@@ -113,15 +113,15 @@ export default function AboutPage() {
               </div>
             </motion.div>
 
-            {/* ── RIGHT: About content (3/5 width) ── */}
+            {/* ── BOTTOM: About content ── */}
             <motion.div
-              className="lg:col-span-3 flex flex-col lg:pl-10"
-              initial={{ opacity: 0, x: shouldReduceMotion ? 0 : 24 }}
-              animate={{ opacity: 1, x: 0 }}
+              className="flex flex-col items-center text-center max-w-3xl mx-auto"
+              initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 24 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.15 }}
             >
               {/* Badge */}
-              <div className="flex items-center gap-2 mb-6">
+              <div className="flex items-center gap-2 mb-6 justify-center">
                 <span className="w-2 h-2 rounded-full bg-crimson animate-pulse" />
                 <span className="font-ui text-xs uppercase tracking-[0.25em] text-crimson">
                   Official HWI Chapter · JDCOEM Nagpur
@@ -133,13 +133,13 @@ export default function AboutPage() {
               </h1>
 
               {/* Decorative divider */}
-              <div className="flex items-center gap-3 mb-7">
-                <div className="h-px w-10 bg-gradient-to-r from-crimson/60 to-transparent" />
+              <div className="flex items-center gap-3 mb-7 justify-center">
+                <div className="h-px w-10 bg-gradient-to-r from-transparent to-crimson/60" />
                 <div className="w-1 h-1 rotate-45 bg-crimson/80" />
-                <div className="h-px w-10 bg-gradient-to-l from-crimson/60 to-transparent" />
+                <div className="h-px w-10 bg-gradient-to-l from-transparent to-crimson/60" />
               </div>
 
-              <p className="font-ui text-steel leading-relaxed text-base max-w-lg">
+              <p className="font-ui text-steel leading-relaxed text-base max-w-2xl mx-auto">
                 HWI JDCOEM is the official Hack With India chapter at JD College of
                 Engineering &amp; Management, Nagpur. Inaugurated in September 2026,
                 we are a student-driven tech community of 36 members across 9
