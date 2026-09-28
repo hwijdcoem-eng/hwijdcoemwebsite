@@ -16,7 +16,8 @@ const ratelimit = redis ? new Ratelimit({
   analytics: true,
 }) : null;
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Initialize Resend safely so Next.js build doesn't crash
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 
 export async function POST(req: Request) {
   try {
@@ -56,7 +57,7 @@ export async function POST(req: Request) {
 
     const recipientEmail = process.env.CONTACT_EMAIL || "hwijdcoem@gmail.com"; 
 
-    const { data, error } = await resend.emails.send({
+    const { data, error } = await resend!.emails.send({
       from: "Acme <onboarding@resend.dev>", // Requires verified domain in production, onboarding works for testing
       to: [recipientEmail],
       replyTo: email,
