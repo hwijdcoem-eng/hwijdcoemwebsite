@@ -71,11 +71,11 @@ export default function AboutPage() {
       {/* ── Hero: Banner left + Content right ───────────────────────────────── */}
       <section className="py-16 border-b border-chrome-dark/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
 
-            {/* ── LEFT: Compact banner frame (2/5 width) ── */}
+            {/* ── LEFT: Banner frame ── */}
             <motion.div
-              className="lg:col-span-2"
+              className="lg:col-span-6"
               initial={{ opacity: 0, x: shouldReduceMotion ? 0 : -24 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
@@ -101,21 +101,21 @@ export default function AboutPage() {
 
                 {/* Banner image */}
                 <div
-                  className="border border-chrome-dark/50 overflow-hidden"
+                  className="border border-chrome-dark/50 overflow-hidden bg-[#0d0d0d]"
                   style={{ clipPath: "polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%)" }}
                 >
                   <img
-                    src="/about-banner.jpg"
+                    src="/about-banner-official.png"
                     alt="HWI JDCOEM – Official Hack With India Chapter at JD College of Engineering & Management, Nagpur"
-                    className="w-full h-auto object-cover block"
+                    className="w-full h-auto object-contain block"
                   />
                 </div>
               </div>
             </motion.div>
 
-            {/* ── RIGHT: About content (3/5 width) ── */}
+            {/* ── RIGHT: About content ── */}
             <motion.div
-              className="lg:col-span-3 flex flex-col lg:pl-10"
+              className="lg:col-span-6 flex flex-col lg:pl-8"
               initial={{ opacity: 0, x: shouldReduceMotion ? 0 : 24 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.15 }}
@@ -139,7 +139,7 @@ export default function AboutPage() {
                 <div className="h-px w-10 bg-gradient-to-l from-crimson/60 to-transparent" />
               </div>
 
-              <p className="font-ui text-steel leading-relaxed text-base max-w-lg">
+              <p className="font-ui text-steel leading-relaxed text-base">
                 HWI JDCOEM is the official Hack With India chapter at JD College of
                 Engineering &amp; Management, Nagpur. Inaugurated in September 2026,
                 we are a student-driven tech community of 36 members across 9

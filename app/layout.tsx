@@ -5,7 +5,7 @@ import { Navbar } from "../components/layout/Navbar";
 import { Footer } from "../components/layout/Footer";
 import { SplashScreen } from "../components/ui/SplashScreen";
 import { DataStreamBackground } from "../components/ui/DataStreamBackground";
-import { Analytics } from "@vercel/analytics/next";
+import { Analytics } from "@vercel/analytics/react";
 
 const orbitron = Orbitron({ subsets: ["latin"], variable: "--font-orbitron" });
 const rajdhani = Rajdhani({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-rajdhani" });
