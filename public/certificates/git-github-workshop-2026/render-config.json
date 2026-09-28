@@ -1,0 +1,11 @@
+{
+  "fontFamily": "Arial, sans-serif",
+  "fontSize": 62,
+  "fontWeight": "bold",
+  "textColor": "#FFFFFF",
+  "textAlign": "center",
+  "textBaseline": "middle",
+  "textY": 435,
+  "maxWidth": 850,
+  "shadow": true
+}

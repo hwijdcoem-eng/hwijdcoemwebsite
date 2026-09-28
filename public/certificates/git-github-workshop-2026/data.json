@@ -1,0 +1,20 @@
+{
+  "eventName": "Git & GitHub Workshop",
+  "participants": [
+    {
+      "usn": "BT240104CS",
+      "name": "Divya Mishra",
+      "certificate": "participation"
+    },
+    {
+      "usn": "BT240105CS",
+      "name": "Student Two",
+      "certificate": "participation"
+    },
+    {
+      "usn": "BT240106CS",
+      "name": "Student Three",
+      "certificate": "participation"
+    }
+  ]
+}
