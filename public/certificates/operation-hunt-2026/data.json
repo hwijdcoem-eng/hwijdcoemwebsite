@@ -1,0 +1,20 @@
+{
+  "eventName": "Operation Hunt",
+  "participants": [
+    {
+      "usn": "BT240104CS",
+      "name": "Divya Mishra",
+      "certificate": "participation"
+    },
+    {
+      "usn": "BT240107CS",
+      "name": "Student Four",
+      "certificate": "participation"
+    },
+    {
+      "usn": "BT240108CS",
+      "name": "Student Five",
+      "certificate": "participation"
+    }
+  ]
+}
