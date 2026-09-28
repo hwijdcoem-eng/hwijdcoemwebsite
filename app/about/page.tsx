@@ -68,16 +68,16 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen">
 
-      {/* ── Hero: Banner Top + Content Bottom ───────────────────────────────── */}
+      {/* ── Hero: Banner left + Content right ───────────────────────────────── */}
       <section className="py-16 border-b border-chrome-dark/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
 
-            {/* ── TOP: Full-width banner frame ── */}
+            {/* ── LEFT: Banner frame ── */}
             <motion.div
-              className="w-full max-w-5xl mx-auto"
-              initial={{ opacity: 0, y: shouldReduceMotion ? 0 : -24 }}
-              animate={{ opacity: 1, y: 0 }}
+              className="lg:col-span-6"
+              initial={{ opacity: 0, x: shouldReduceMotion ? 0 : -24 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
               <div className="relative">
@@ -101,27 +101,27 @@ export default function AboutPage() {
 
                 {/* Banner image */}
                 <div
-                  className="border border-chrome-dark/50 overflow-hidden"
+                  className="border border-chrome-dark/50 overflow-hidden bg-[#0d0d0d]"
                   style={{ clipPath: "polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%)" }}
                 >
                   <img
                     src="/about-banner-official.png"
                     alt="HWI JDCOEM – Official Hack With India Chapter at JD College of Engineering & Management, Nagpur"
-                    className="w-full h-auto object-cover block"
+                    className="w-full h-auto object-contain block"
                   />
                 </div>
               </div>
             </motion.div>
 
-            {/* ── BOTTOM: About content ── */}
+            {/* ── RIGHT: About content ── */}
             <motion.div
-              className="flex flex-col items-center text-center max-w-3xl mx-auto"
-              initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 24 }}
-              animate={{ opacity: 1, y: 0 }}
+              className="lg:col-span-6 flex flex-col lg:pl-8"
+              initial={{ opacity: 0, x: shouldReduceMotion ? 0 : 24 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.15 }}
             >
               {/* Badge */}
-              <div className="flex items-center gap-2 mb-6 justify-center">
+              <div className="flex items-center gap-2 mb-6">
                 <span className="w-2 h-2 rounded-full bg-crimson animate-pulse" />
                 <span className="font-ui text-xs uppercase tracking-[0.25em] text-crimson">
                   Official HWI Chapter · JDCOEM Nagpur
@@ -133,13 +133,13 @@ export default function AboutPage() {
               </h1>
 
               {/* Decorative divider */}
-              <div className="flex items-center gap-3 mb-7 justify-center">
-                <div className="h-px w-10 bg-gradient-to-r from-transparent to-crimson/60" />
+              <div className="flex items-center gap-3 mb-7">
+                <div className="h-px w-10 bg-gradient-to-r from-crimson/60 to-transparent" />
                 <div className="w-1 h-1 rotate-45 bg-crimson/80" />
-                <div className="h-px w-10 bg-gradient-to-l from-transparent to-crimson/60" />
+                <div className="h-px w-10 bg-gradient-to-l from-crimson/60 to-transparent" />
               </div>
 
-              <p className="font-ui text-steel leading-relaxed text-base max-w-2xl mx-auto">
+              <p className="font-ui text-steel leading-relaxed text-base">
                 HWI JDCOEM is the official Hack With India chapter at JD College of
                 Engineering &amp; Management, Nagpur. Inaugurated in September 2026,
                 we are a student-driven tech community of 36 members across 9
