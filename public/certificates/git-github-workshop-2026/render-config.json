@@ -5,10 +5,10 @@
   "textColor": "#222222",
   "textAlign": "center",
   "textBaseline": "middle",
-  "textY": 440,
+  "textY": 380,
   "maxWidth": 850,
   "signatureX": 450,
-  "signatureY": 600,
+  "signatureY": 550,
   "signatureWidth": 120,
   "signatureWhite": false
 }
