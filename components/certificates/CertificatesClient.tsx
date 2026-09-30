@@ -143,11 +143,17 @@ export default function CertificatesClient({ initialEvents }: { initialEvents: E
             const b = data[i + 2];
             const brightness = (r + g + b) / 3;
             
-            let alpha = 255;
-            if (brightness > 230) {
+            // Stricter background removal to avoid shadow boxes
+            let alpha = 0;
+            if (brightness < 100) {
+              // Dark ink is fully opaque
+              alpha = 255;
+            } else if (brightness < 160) {
+              // Fade out edge of the ink
+              alpha = 255 - ((brightness - 100) * (255 / 60));
+            } else {
+              // Anything brighter than 160 (shadows, paper, white background) is fully transparent
               alpha = 0;
-            } else if (brightness > 130) {
-              alpha = 255 - ((brightness - 130) * (255 / 100));
             }
             data[i + 3] = alpha;
 
