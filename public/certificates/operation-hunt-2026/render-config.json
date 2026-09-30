@@ -1,11 +1,14 @@
 {
-  "fontFamily": "Arial, sans-serif",
-  "fontSize": 62,
+  "fontFamily": "Orbitron, sans-serif",
+  "fontSize": 56,
   "fontWeight": "bold",
   "textColor": "#FFFFFF",
   "textAlign": "center",
   "textBaseline": "middle",
-  "textY": 350,
+  "textY": 375,
   "maxWidth": 850,
-  "shadow": true
+  "signatureX": 450,
+  "signatureY": 560,
+  "signatureWidth": 120,
+  "signatureWhite": true
 }

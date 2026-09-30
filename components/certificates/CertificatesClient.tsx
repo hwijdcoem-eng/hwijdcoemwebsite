@@ -104,6 +104,16 @@ export default function CertificatesClient({ initialEvents }: { initialEvents: E
         throw new Error("Certificate template missing.");
       }
 
+      // 4.5 Load Signature (if configured)
+      let signatureImg: HTMLImageElement | null = null;
+      if (config.signatureX !== undefined && config.signatureY !== undefined) {
+        try {
+          signatureImg = await loadImg('/certificates/signature.png');
+        } catch (err) {
+          console.warn("Signature image configured but not found");
+        }
+      }
+
       // 5. Setup Canvas
       const canvas = document.createElement("canvas");
       canvas.width = img.naturalWidth;
@@ -112,6 +122,46 @@ export default function CertificatesClient({ initialEvents }: { initialEvents: E
       if (!ctx) throw new Error("Failed to initialize drawing canvas.");
 
       ctx.drawImage(img, 0, 0);
+
+      if (signatureImg) {
+        const sigWidth = config.signatureWidth || 150;
+        const sigHeight = config.signatureHeight || (sigWidth * signatureImg.naturalHeight / signatureImg.naturalWidth);
+        
+        // Remove white background from signature
+        const tempCanvas = document.createElement("canvas");
+        tempCanvas.width = sigWidth;
+        tempCanvas.height = sigHeight;
+        const tempCtx = tempCanvas.getContext("2d");
+        if (tempCtx) {
+          tempCtx.drawImage(signatureImg, 0, 0, sigWidth, sigHeight);
+          const imgData = tempCtx.getImageData(0, 0, sigWidth, sigHeight);
+          const data = imgData.data;
+          
+          for (let i = 0; i < data.length; i += 4) {
+            const r = data[i];
+            const g = data[i + 1];
+            const b = data[i + 2];
+            const brightness = (r + g + b) / 3;
+            
+            let alpha = 255;
+            if (brightness > 230) {
+              alpha = 0;
+            } else if (brightness > 130) {
+              alpha = 255 - ((brightness - 130) * (255 / 100));
+            }
+            data[i + 3] = alpha;
+
+            // Optionally make ink white for dark certificates
+            if (config.signatureWhite && alpha > 0) {
+              data[i] = 255;
+              data[i+1] = 255;
+              data[i+2] = 255;
+            }
+          }
+          tempCtx.putImageData(imgData, 0, 0);
+          ctx.drawImage(tempCanvas, config.signatureX, config.signatureY);
+        }
+      }
 
       const textX = config.textX || canvas.width / 2;
       const textY = config.textY || canvas.height * 0.52;
