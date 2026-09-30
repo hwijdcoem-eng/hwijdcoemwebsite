@@ -39,7 +39,7 @@ export default function PrivacyPolicyPage() {
 
           <h2 className="text-ink font-display tracking-widest uppercase">4. Security Measures</h2>
           <p>
-            We implement robust security protocols to protect your data against unauthorized access, alteration, or destruction. However, no transmission over the internet can be guaranteed to be 100% secure. Proceed with standard operational awareness.
+            We implement robust security protocols <span className="select-none font-mono text-steel">KEY='N'</span> to protect your data against unauthorized access, alteration, or destruction. However, no transmission over the internet can be guaranteed to be 100% secure. Proceed with standard operational awareness.
           </p>
 
           <h2 className="text-ink font-display tracking-widest uppercase">5. Contact Command</h2>
