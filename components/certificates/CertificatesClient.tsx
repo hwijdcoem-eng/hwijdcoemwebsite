@@ -6,7 +6,7 @@ import { Card } from "../ui/Card";
 import { Button } from "../ui/Button";
 
 type EventItem = { id: string; name: string };
-type Participant = { name: string; usn: string; certificate: string };
+type Participant = { name: string; usn?: string; phone?: string; certificate?: string };
 
 export default function CertificatesClient({ initialEvents }: { initialEvents: EventItem[] }) {
   const [selectedEvent, setSelectedEvent] = useState(initialEvents[0]?.id || "");
@@ -24,7 +24,7 @@ export default function CertificatesClient({ initialEvents }: { initialEvents: E
     setSuccessDataUrl(null);
 
     if (!selectedEvent || !usn.trim()) {
-      setError("Please select an event and enter your USN.");
+      setError("Please select an event and enter your ID/Phone.");
       return;
     }
 
@@ -36,9 +36,13 @@ export default function CertificatesClient({ initialEvents }: { initialEvents: E
       if (!res.ok) throw new Error("Certificate data unavailable.");
       const data = await res.json();
 
-      // 2. Lookup USN
-      const targetUSN = usn.trim().toUpperCase();
-      const participant = data.participants.find((p: Participant) => p.usn.toUpperCase() === targetUSN);
+      // 2. Lookup USN / Phone
+      const targetInput = usn.trim().toUpperCase();
+      const participant = data.participants.find((p: Participant) => {
+        const matchUsn = p.usn && p.usn.toString().toUpperCase() === targetInput;
+        const matchPhone = p.phone && p.phone.toString().toUpperCase() === targetInput;
+        return matchUsn || matchPhone;
+      });
 
       if (!participant) {
         throw new Error("No certificate found for this USN.");
@@ -48,7 +52,7 @@ export default function CertificatesClient({ initialEvents }: { initialEvents: E
       const certType = participant.certificate || "participation";
 
       // 3. Load Config
-      let config = {
+      let config: any = {
         fontFamily: "Cinzel, serif",
         fontSize: 72,
         fontWeight: "bold",
@@ -123,6 +127,29 @@ export default function CertificatesClient({ initialEvents }: { initialEvents: E
 
       ctx.drawImage(img, 0, 0);
 
+      // --- Custom Overlays ---
+      if (config.coverups) {
+        config.coverups.forEach((c: any) => {
+          ctx.fillStyle = c.color;
+          ctx.fillRect(c.x, c.y, c.w, c.h);
+        });
+      }
+      if (config.customTexts) {
+        config.customTexts.forEach((ct: any) => {
+          ctx.font = ct.font;
+          ctx.fillStyle = ct.color;
+          ctx.textAlign = ct.align || "left";
+          ctx.textBaseline = ct.baseline || "top";
+          if (ct.letterSpacing && 'letterSpacing' in ctx) {
+            (ctx as any).letterSpacing = ct.letterSpacing;
+          }
+          ctx.fillText(ct.text, ct.x, ct.y);
+          if ('letterSpacing' in ctx) {
+            (ctx as any).letterSpacing = "0px";
+          }
+        });
+      }
+
       if (signatureImg) {
         const sigWidth = config.signatureWidth || 150;
         const sigHeight = config.signatureHeight || (sigWidth * signatureImg.naturalHeight / signatureImg.naturalWidth);
@@ -165,8 +192,25 @@ export default function CertificatesClient({ initialEvents }: { initialEvents: E
             }
           }
           tempCtx.putImageData(imgData, 0, 0);
-          ctx.drawImage(tempCanvas, config.signatureX, config.signatureY);
+
+          ctx.save();
+          const sigX = config.signatureX;
+          const sigY = config.signatureY;
+          
+          if (config.signatureRotation) {
+            ctx.translate(sigX + sigWidth / 2, sigY + sigHeight / 2);
+            ctx.rotate((config.signatureRotation * Math.PI) / 180);
+            ctx.translate(-(sigX + sigWidth / 2), -(sigY + sigHeight / 2));
+          }
+          
+          ctx.drawImage(tempCanvas, sigX, sigY);
+          ctx.restore();
         }
+      }
+
+      // Ensure the font is loaded before measuring and drawing
+      if (config.fontFamily.includes("Orbitron")) {
+        await document.fonts.load(`16px Orbitron`);
       }
 
       const textX = config.textX || canvas.width / 2;
@@ -257,13 +301,15 @@ export default function CertificatesClient({ initialEvents }: { initialEvents: E
 
         <div className="relative group/input">
           <label className="block text-steel font-ui uppercase tracking-wider mb-2 text-sm group-focus-within/input:text-crimson transition-colors">
-            Enter USN / ID
+            {selectedEvent === "git-github-workshop-2026" || selectedEvent === "operation-hunt-2026" 
+              ? "Enter Phone Number" 
+              : "Enter USN / ID"}
           </label>
           <input
             type="text"
             value={usn}
             onChange={(e) => setUsn(e.target.value)}
-            placeholder="e.g. CM24001"
+            placeholder={selectedEvent === "git-github-workshop-2026" || selectedEvent === "operation-hunt-2026" ? "e.g. 9876543210" : "e.g. CM24001"}
             className="w-full bg-void/50 border border-chrome-dark/30 p-4 text-ink focus:border-crimson focus:shadow-[0_0_15px_rgba(255,16,83,0.2)] focus:outline-none transition-all font-ui uppercase placeholder:normal-case placeholder:text-steel/30 tracking-widest"
           />
         </div>

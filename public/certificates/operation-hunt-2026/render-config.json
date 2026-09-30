@@ -1,14 +1,23 @@
 {
-  "fontFamily": "\"Arial Black\", Arial, sans-serif",
-  "fontSize": 34,
-  "fontWeight": "900",
+  "fontFamily": "Orbitron, sans-serif",
+  "fontSize": 32,
+  "fontWeight": "bold",
   "textColor": "#FFFFFF",
   "textAlign": "center",
   "textBaseline": "middle",
-  "textY": 370,
+  "textY": 355,
   "maxWidth": 850,
-  "signatureX": 440,
-  "signatureY": 570,
-  "signatureWidth": 140,
-  "signatureWhite": true
+  "signatureX": 455,
+  "signatureY": 485,
+  "signatureWidth": 100,
+  "signatureWhite": true,
+  "signatureRotation": 25,
+  "coverups": [
+    { "x": 182, "y": 42, "w": 90, "h": 80, "color": "#060303" }
+  ],
+  "customTexts": [
+    { "text": "JDCOEM", "x": 185, "y": 45, "font": "10px Orbitron, sans-serif", "color": "#AAAAAA", "align": "left", "baseline": "top", "letterSpacing": "2px" },
+    { "text": "NAGPUR", "x": 185, "y": 62, "font": "10px Orbitron, sans-serif", "color": "#AAAAAA", "align": "left", "baseline": "top", "letterSpacing": "2px" },
+    { "text": "// 2026", "x": 185, "y": 80, "font": "10px Orbitron, sans-serif", "color": "#AAAAAA", "align": "left", "baseline": "top", "letterSpacing": "2px" }
+  ]
 }

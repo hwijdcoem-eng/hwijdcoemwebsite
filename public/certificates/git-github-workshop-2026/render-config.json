@@ -1,14 +1,15 @@
 {
   "fontFamily": "\"Arial Black\", Arial, sans-serif",
-  "fontSize": 40,
+  "fontSize": 30,
   "fontWeight": "900",
   "textColor": "#222222",
   "textAlign": "center",
   "textBaseline": "middle",
-  "textY": 380,
+  "textY": 378,
   "maxWidth": 850,
   "signatureX": 450,
-  "signatureY": 550,
-  "signatureWidth": 120,
-  "signatureWhite": false
+  "signatureY": 495,
+  "signatureWidth": 100,
+  "signatureWhite": false,
+  "signatureRotation": 25
 }
