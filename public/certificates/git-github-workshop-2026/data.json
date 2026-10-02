@@ -386,10 +386,16 @@
       "certificate": "participation"
     },
     {
+      "name": "Ekta Uprade",
+      "phone": "9356984202",
+      "certificate": "participation"
+    },
+    {
       "name": "Ved Naikele",
       "phone": "8788515353",
       "certificate": "participation"
     }
+    
   ],
   "eventName": "Git & GitHub"
 }
